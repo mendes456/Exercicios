@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatura dos Alunos</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+    #title {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 23px;
+      color: blue;
+      border: 4px solid blue ;
+    }
+
+    body{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-size: 13px;
+      background-color: aqua;
+    
+
+    }
+    input,label{
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 12px;
+    }
+
+    img{
+        width: 50%;
+         height: 50%;
+    }
+  </style>
+</head>
+<body>
+      <div class="text-center mt-4">
+    <a href="https://www.formatura.com">
+      <img src="img/formatura.jpg" class="img-fluid img-thumbnail" width="5" height="300" alt="Logo Naruto" />
+    </a>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header text-center">
+            <h2 id="title">Formatura dos Alunos</h2>
+          </div>
+
+          <div class="card-body">
+
+            <form action="formFormatura"  action="formFormatura" method="post">
+
+              <div class="mb-3">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone" class="form-control"
+                required onclick="validarTelefone(telefone)" />
+              </div>
+
+              <div class="mb-3">
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" f class="form-control"
+                  placeholder="Digite seu endereço" required />
+              </div>
+
+              <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="nome@exemplo.com"
+                  required />
+              </div>
+
+              <br>
+
+              <p>Selecione o Curso desejado:</p>
+              <div>
+                <input type="radio" id="informatica" name="curso" value="informatica" onclick="exibirCurso()">
+                <label for="informatica">Informática</label>
+              </div>
+              <div>
+                <input type="radio" id="administracao" name="curso" value="administracao" onclick="exibirCurso()">
+                <label for="administracao">Administração</label>
+              </div>
+              <div>
+                <input type="radio" id="enfermagem" name="curso" value="enfermagem" onclick="exibirCurso()" >
+                <label for="enfermagem">enfermagem</label>
+              </div>
+              <br>
+              <br>
+
+              <label for="sessao">Escolha o tipo de Evento preferido:</label>
+              <select id="sessao" name="sessao">
+                <option value="" >Selecione</option>
+                <option value="cerimonia" >Cerimônia</option>
+                <option value="Baile" >Baile</option>
+                <option value="Jantar">Jantar</option>
+              </select>
+
+
+           
+              
+              <div class="text-end">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="reset" class="btn btn-success">Limpar</button>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      alert("Bem-vindo à Formatura dos Alunos");
+
+
+      const nomeUsuario = prompt("Qual seu nome?");
+      if (nomeUsuario) alert("Saudações, " + nomeUsuario + "!");
+    }
+  </script>
+
+  <script>
+   
+    document.getElementById("formFormatura").addEventListener("submit", function (event) {
+      const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;
+      const endereco = document.getElementById("endereco").value;
+      const email = document.getElementById("email").value;
+
+
+      if (!nome || !telefone || !endereco || !email) {
+        alert("Preencha todos os campos obrigatórios!");
+        event.preventDefault();
+        return;
+      }
+       if (!validarTelefone(telefone)) {
+        alert("Telefone inválido!");
+        event.preventDefault();
+      }
+
+
+    });
+  </script>
+
+  
+    <script>
+    function exibirCurso() {
+      const cursoSelecionado = document.querySelector('input[name="curso"]:checked');
+      if (cursoSelecionado) {
+        alert("Você escolheu o curso: " + cursoSelecionado.value);
+      }
+    }
+  </script>
+
+<script>
+function validarTelefone(tel) {
+
+  var regex = new RegExp('^((1[1-9])|([2-9][0-9]))((3[0-9]{3}[0-9]{4})|(9[0-9]{3}[0-9]{5}))$');
+  return regex.test(tel);
+}
+
+var telefone1 = '11992399288'; 
+var telefone2 = '1199239-9288'; 
+
+console.log(validarTelefone(telefone1));
+console.log(validarTelefone(telefone2)); 
+</script>
+    
+</body>
+</html>
